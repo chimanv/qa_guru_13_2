@@ -23,17 +23,17 @@ public class RegistrationFormTest {
         executeJavaScript("$('footer').remove()");
         executeJavaScript("$('#fixedban').remove()");
 
-        final String firstName = "Ivanov";
-        final String userName = "Ivan";
-        final String email = "test@test.tt";
-        final String gender = "Male";
-        final String phoneNumber = "7111222333";
-        final String yearBrthd = "2000";
-        final String dayBrthd = "10";
-        final String monthBthd = "July";
-        final String subject = "Computer science";
-        final String hobby = "Music";
-        final String fileName = "Screenshot_2.png";
+        String firstName = "Ivanov";
+        String userName = "Ivan";
+        String email = "test@test.tt";
+        String gender = "Male";
+        String phoneNumber = "7111222333";
+        String yearBrthd = "2000";
+        String dayBrthd = "10";
+        String monthBthd = "July";
+        String subject = "Computer science";
+        String hobby = "Music";
+        String fileName = "Screenshot_2.png";
 
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(userName);
