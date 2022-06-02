@@ -71,6 +71,7 @@ public class RegistrationFormTest {
                 text(subject),
                 text(hobby),
                 text(fileName),
+                text(address),
                 text(state + " " + city));
     }
 }
