@@ -34,6 +34,9 @@ public class RegistrationFormTest {
         String subject = "Computer science";
         String hobby = "Music";
         String fileName = "Screenshot_2.png";
+        String address = "Sovetskaya st. 1";
+        String state = "Haryana";
+        String city = "Karnal";
 
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(userName);
@@ -50,6 +53,13 @@ public class RegistrationFormTest {
         $("#subjectsInput").pressEnter();
         $(byText(hobby)).click();
         $("#uploadPicture").uploadFromClasspath(fileName);
+        $("#currentAddress").setValue(address);
+
+        $("#state").click();
+        $(byText(state)).click();
+        $("#city").click();
+        $(byText(city)).click();
+
         $("#submit").click();
 
         $(".modal-content").shouldHave(
@@ -60,6 +70,7 @@ public class RegistrationFormTest {
                 text(dayBrthd + " " + monthBthd + "," + yearBrthd),
                 text(subject),
                 text(hobby),
-                text(fileName));
+                text(fileName),
+                text(state + " " + city));
     }
 }
