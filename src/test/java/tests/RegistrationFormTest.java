@@ -1,28 +1,11 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
-
-public class RegistrationFormTest {
-
-    @BeforeAll
-    static void beforeAll() {
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920*1080";
-    }
+public class RegistrationFormTest extends BaseTest {
 
     @Test
     void signOnSite() {
-        open("/automation-practice-form");
-
-        executeJavaScript("$('footer').remove()");
-        executeJavaScript("$('#fixedban').remove()");
-
         String firstName = "Ivanov";
         String userName = "Ivan";
         String email = "test@test.tt";
@@ -38,40 +21,31 @@ public class RegistrationFormTest {
         String state = "Haryana";
         String city = "Karnal";
 
-        $("#firstName").setValue(firstName);
-        $("#lastName").setValue(userName);
-        $("#userEmail").setValue(email);
-        $(byText(gender)).click();
-        $("#userNumber").setValue(phoneNumber);
+        registrationFormPage.
+                openPage().
+                setFirstName(firstName).
+                setUserName(userName).
+                setEmail(email).
+                selectGender(gender).
+                setPhoneNumber(phoneNumber).
+                setDayOfBirth(dayBrthd, monthBthd, yearBrthd).
+                selectSubject(subject).
+                selectHobby(hobby).
+                uploadFile(fileName).
+                setAddress(address).
+                selectState(state).
+                selectCity(city).
+                pressSubmit().
+                chekResult("Student Name", firstName + " " + userName).
+                chekResult("Student Email", email).
+                chekResult("Gender", gender).
+                chekResult("Mobile", phoneNumber).
+                chekResult("Date of Birth", dayBrthd + " " + monthBthd + "," + yearBrthd).
+                chekResult("Subjects", subject).
+                chekResult("Hobbies", hobby).
+                chekResult("Picture", fileName).
+                chekResult("Address", address).
+                chekResult("State and City", state + " " + city);
 
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOption(monthBthd);
-        $(".react-datepicker__year-select").selectOption(yearBrthd);
-        $(byText(dayBrthd)).click();
-
-        $("#subjectsInput").sendKeys(subject);
-        $("#subjectsInput").pressEnter();
-        $(byText(hobby)).click();
-        $("#uploadPicture").uploadFromClasspath(fileName);
-        $("#currentAddress").setValue(address);
-
-        $("#state").click();
-        $(byText(state)).click();
-        $("#city").click();
-        $(byText(city)).click();
-
-        $("#submit").click();
-
-        $(".modal-content").shouldHave(
-                text(firstName + " " + userName),
-                text(email),
-                text(gender),
-                text(phoneNumber),
-                text(dayBrthd + " " + monthBthd + "," + yearBrthd),
-                text(subject),
-                text(hobby),
-                text(fileName),
-                text(address),
-                text(state + " " + city));
     }
 }
