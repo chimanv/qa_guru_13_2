@@ -16,7 +16,7 @@ public class RegistrationFormPage {
     public RegistrationFormPage openPage() {
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text(TITLE_REGISTRATION_FORM));
-        removeFooterAndFixeban();
+        removeFooterAndFixedban();
         return this;
     }
 
@@ -94,7 +94,7 @@ public class RegistrationFormPage {
         return this;
     }
 
-    private void removeFooterAndFixeban() {
+    private void removeFooterAndFixedban() {
         executeJavaScript("$('footer').remove()");
         executeJavaScript("$('#fixedban').remove()");
     }
