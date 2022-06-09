@@ -6,7 +6,6 @@ public class RegistrationFormTest extends BaseTest {
 
     @Test
     void signOnSite() {
-
         String firstName = "Ivanov";
         String userName = "Ivan";
         String email = "test@test.tt";
@@ -36,9 +35,7 @@ public class RegistrationFormTest extends BaseTest {
                 setAddress(address).
                 selectState(state).
                 selectCity(city).
-                pressSubmit();
-
-        registrationFormPage.
+                pressSubmit().
                 chekResult("Student Name", firstName + " " + userName).
                 chekResult("Student Email", email).
                 chekResult("Gender", gender).
