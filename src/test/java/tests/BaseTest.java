@@ -6,6 +6,7 @@ import pages.RegistrationFormPage;
 
 public class BaseTest {
     final RegistrationFormPage registrationFormPage = new RegistrationFormPage();
+    final DataTest dataTest = new DataTest();
 
     @BeforeAll
     static void beforeAll() {
